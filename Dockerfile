@@ -11,12 +11,12 @@ FROM alpine:latest
 
 WORKDIR /app
 
-RUN adduser -D -g '' appuser \
+RUN adduser -D -u 10001 -g '' appuser \
     && chown -R appuser:appuser /app
 
 COPY --from=build /app/main .
 
-USER appuser
+USER 10001
 
 EXPOSE 3200
 
